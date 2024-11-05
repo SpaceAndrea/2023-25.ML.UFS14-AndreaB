@@ -1,4 +1,5 @@
 FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/tensorflow-training:2.12.0-cpu-py310
+FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/tensorflow-training:2.12.0-cpu-py310
 
 # Copia il file requirements.txt nel container
 COPY requirements.txt /opt/ml/code/requirements.txt
