@@ -1,0 +1,19 @@
+FROM 763104351884.dkr.ecr.us-east-1.amazonaws.com/tensorflow-inference:2.12.1-cpu
+
+# Aggiungi i requisiti
+ADD ./requirements.inference.txt /opt/requirements.txt
+RUN pip3 install -r /opt/requirements.txt
+
+# Copia lo script di inferenza
+ADD ./inference.py /opt/program/inference.py
+
+# Copia i file del modello
+ADD ./model/card_model.h5 /opt/ml/model/
+ADD ./model/class_indices.pkl /opt/ml/model/
+
+# Imposta le variabili d'ambiente
+ENV FLASK_APP=/opt/program/inference.py
+ENV SM_MODEL_DIR=/opt/ml/model
+
+# Comando di avvio
+CMD ["flask", "run", "--host", "0.0.0.0", "--port", "8080"]
