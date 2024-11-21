@@ -8,7 +8,7 @@ RUN pip3 install -r /opt/requirements.txt
 ADD ./inference.py /opt/program/inference.py
 
 # Copia i file del modello
-ADD ./model/card_model.h5 /opt/ml/model/
+ADD ./model/model.keras /opt/ml/model/
 ADD ./model/class_indices.pkl /opt/ml/model/
 
 # Imposta le variabili d'ambiente
