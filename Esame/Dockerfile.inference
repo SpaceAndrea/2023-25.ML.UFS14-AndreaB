@@ -6,14 +6,10 @@ RUN pip3 install -r /opt/requirements.txt
 
 # Copia lo script di inferenza
 ADD ./inference.py /opt/program/inference.py
-
-# Copia i file del modello
-ADD ./model/model.keras /opt/ml/model/
-ADD ./model/class_indices.pkl /opt/ml/model/
+ADD ./pippo.sh /opt/pippo.sh
 
 # Imposta le variabili d'ambiente
 ENV FLASK_APP=/opt/program/inference.py
-ENV SM_MODEL_DIR=/opt/ml/model
 
-# Comando di avvio
-CMD ["flask", "run", "--host", "0.0.0.0", "--port", "8080"]
+# Imposta il comando di avvio corretto
+ENTRYPOINT ["/opt/pippo.sh"]
