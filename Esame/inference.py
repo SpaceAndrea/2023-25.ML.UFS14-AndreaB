@@ -53,6 +53,14 @@ def ping():
         })
     else:
         return "Per favore, invia un'immagine via POST."
+    
+# @app.route('/invocations', methods=['POST'])
+# def invocations():
+#     return doit()
+    
+# @app.route('/ping')
+# def ping():
+#     return 'Hello, World!'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
